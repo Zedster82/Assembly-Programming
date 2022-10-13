@@ -5,18 +5,20 @@
 ExitProcess PROTO, dwExitCode: DWORD  ; Exit process prototype
 
 .data ; data segment
-	test1score DWORD 35
-	test2score DWORD 45
-	test1max DWORD 60
-	test2max DWORD 45
-
+	
+	array1 DWORD 2,4,6,8,10,12,14,16,18,20
 
 .code ; code segment
 
 main PROC ; main procedure
 	; write your assembly code here
-	mov eax test1score
-	mul test2score
+
+	mov ebx,0
+	Mov eax, OFFSET array1 
+	Mov ebx, [eax + TYPE array1 * 1]
+
+	mov edx, 10000
+	mov [eax + TYPE array1 * 2], edx
 
 	INVOKE ExitProcess, 0 ; call exit function
   
