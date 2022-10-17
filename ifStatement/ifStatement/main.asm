@@ -5,20 +5,22 @@
 ExitProcess PROTO, dwExitCode: DWORD  ; Exit process prototype
 
 .data ; data segment
-	
-	array1 DWORD 2,4,6,8,10,12,14,16,18,20
+	val SWORD, 1
 
 .code ; code segment
 
 main PROC ; main procedure
-	; write your assembly code here
+	
+	cmp val, 1
+	JAE	setVal4
+	mov val,3
+	jmp done
 
-	mov ebx,0
-	Mov eax, OFFSET array1 
-	Mov ebx, [eax + TYPE array1 * 1]
+	setVal4:
+		mov val,4
 
-	mov edx, 10000h
-	mov [eax + TYPE array1 * 2], edx
+	done:
+		INVOKE ExitProcess, 0
 
 	INVOKE ExitProcess, 0 ; call exit function
   
